@@ -1,0 +1,183 @@
+/* ========================================
+   liamhowell.com
+   ======================================== */
+
+:root {
+    --navy: #17334a;
+    --terracotta: #9c5038;
+    --forest: #4a7332;
+    --slate: #3e5f82;
+    --gray: #575766;
+    --teal: #2b6585;
+    --plum: #7a4b6a;
+    --olive: #6b5d2e;
+    --accent: var(--navy);
+}
+
+/* Reset */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+    font-family: 'Lato', sans-serif;
+    color: #333;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.5s ease, border-color 0.5s ease;
+}
+a:hover {
+    border-bottom-color: var(--accent);
+}
+
+.noselect {
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+/* ========================================
+   Header accent band
+   ======================================== */
+.header-accent {
+    position: relative;
+    background: var(--accent);
+    color: white;
+    padding: 40px 35px 80px;
+    clip-path: polygon(0 0, 100% 0, 100% 65%, 0 100%);
+    transition: background 0.5s ease;
+}
+
+.header-inner {
+    font-family: 'Bree Serif', serif;
+}
+
+.header-accent .name {
+    font-size: 2.2em;
+    line-height: 1.1;
+}
+
+.header-accent .title {
+    font-size: 1.2em;
+    font-weight: normal;
+    opacity: 0.75;
+    margin-top: 4px;
+}
+
+/* ========================================
+   Main content
+   ======================================== */
+.content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+    font-size: 1.15em;
+    line-height: 1.6;
+}
+
+.photo {
+    margin-bottom: 40px;
+}
+
+.photo img {
+    display: block;
+    width: 220px;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+    aspect-ratio: 1;
+}
+
+.bio {
+    width: 100%;
+    max-width: 540px;
+}
+
+.about {
+    margin-bottom: 36px;
+}
+
+.about h2, .links h2 {
+    font-family: 'Bree Serif', serif;
+    font-size: 1.3em;
+    margin-bottom: 8px;
+    color: var(--accent);
+    transition: color 0.5s ease;
+}
+
+.about p {
+    color: #444;
+}
+
+.links ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.links a {
+    font-size: 0.95em;
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+@media (min-width: 640px) {
+    .header-accent {
+        padding: 48px 48px 100px;
+        clip-path: polygon(0 0, 100% 0, 100% 55%, 0 100%);
+    }
+
+    .header-accent .name {
+        font-size: 2.8em;
+    }
+
+    .header-accent .title {
+        font-size: 1.4em;
+    }
+}
+
+@media (min-width: 700px) {
+    .content {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 48px;
+        padding-top: 48px;
+    }
+
+    .photo {
+        flex-shrink: 0;
+        margin-bottom: 0;
+    }
+
+    .photo img {
+        width: 260px;
+    }
+}
+
+@media (min-width: 1000px) {
+    .photo img {
+        width: 300px;
+    }
+
+    .content {
+        gap: 64px;
+        padding-top: 56px;
+    }
+}
