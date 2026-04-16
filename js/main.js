@@ -80,27 +80,38 @@
         if (!btn) return;
 
         var glyph = btn.querySelector('.wave-glyph');
-        var clearTimer = null;
+        // Fallback duration in case animationend doesn't fire (e.g. reduced
+        // motion). Should be slightly longer than the wave-high-five keyframe.
+        var FALLBACK_MS = 700;
+        var fallbackTimer = null;
+
+        function reset() {
+            if (fallbackTimer) { clearTimeout(fallbackTimer); fallbackTimer = null; }
+            btn.classList.remove('is-high-five');
+            glyph.textContent = '\uD83D\uDC4B'; // 👋
+        }
 
         function slap() {
             // Intentionally does NOT stop propagation — the click bubbles up
             // to the header-accent handler so the color also cycles.
-            if (clearTimer) {
-                clearTimeout(clearTimer);
-                btn.classList.remove('is-high-five');
-                // Force reflow so the animation restarts on rapid clicks.
-                void btn.offsetWidth;
-            }
-            // Swap glyph to an open palm for the duration of the hit.
+
+            // Restart cleanly if a previous slap is still in flight: pop the
+            // class, force a reflow so the animation can re-trigger.
+            reset();
+            void glyph.offsetWidth;
+
             glyph.textContent = '\u270B'; // ✋
             btn.classList.add('is-high-five');
 
-            clearTimer = setTimeout(function () {
-                btn.classList.remove('is-high-five');
-                glyph.textContent = '\uD83D\uDC4B'; // 👋
-                clearTimer = null;
-            }, 600);
+            fallbackTimer = setTimeout(reset, FALLBACK_MS);
         }
+
+        // Listen on the inner glyph so we only react to wave-high-five
+        // (the wave-hand on the wrapper would never fire animationend
+        // because it's infinite, but be specific anyway).
+        glyph.addEventListener('animationend', function (e) {
+            if (e.animationName === 'wave-high-five') reset();
+        });
 
         btn.addEventListener('click', slap);
     });
