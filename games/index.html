@@ -7,70 +7,18 @@
     <meta name="robots" content="noindex" />
     <meta name="description" content="A secret little arcade of games by Liam Howell." />
     <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32" />
-    <!-- Same stylesheet as the home page, so this is visually identical to the
-         arcade revealed when you peel the home page back. -->
-    <link href="/css/fonts.css?v=6928eab" rel="stylesheet" type="text/css" />
-    <link href="/css/main.css?v=6928eab" rel="stylesheet" type="text/css" />
+    <!--
+      The arcade lives inline on the home page (single source of truth). This
+      path just bounces there with an ?arcade flag, which opens the arcade
+      instantly on load and normalizes the URL back to /games/. Peeling the
+      home page's corner reaches the same state without any navigation.
+    -->
+    <script>
+      location.replace('/?arcade');
+    </script>
+    <meta http-equiv="refresh" content="0; url=/?arcade" />
   </head>
-  <body class="arcade-open">
-    <section class="games-room" id="games-room" aria-label="Arcade">
-      <div class="room-inner">
-        <a class="room-back" href="/" style="display:inline-block">
-          <span aria-hidden="true">&larr;</span> Back to the page
-        </a>
-        <header class="room-head">
-          <span class="room-kicker">You found the back room</span>
-          <h2 class="room-title">Arcade</h2>
-          <p class="room-sub">Little games I build to mess around. More to come.</p>
-        </header>
-        <div class="room-grid">
-          <a class="game-card" href="https://doyouevenknowme.com" target="_blank" rel="noopener">
-            <div class="game-thumb game-thumb--dyekm" aria-hidden="true">
-              <span class="game-thumb-glyph">💞</span>
-            </div>
-            <div class="game-meta">
-              <span class="game-name">Do You Even Know Me</span>
-              <span class="game-tag">A daily 2-minute question for couples. Find out how well you really read each other.</span>
-            </div>
-          </a>
-          <a class="game-card" href="/games/managing-up/">
-            <div class="game-thumb game-thumb--managing" aria-hidden="true">
-              <span class="game-thumb-glyph">📈</span>
-            </div>
-            <div class="game-meta">
-              <span class="game-name">Managing Up</span>
-              <span class="game-tag">Climb the org chart one bad decision at a time.</span>
-            </div>
-          </a>
-          <a class="game-card" href="/games/mostly/">
-            <div class="game-thumb game-thumb--mostly" aria-hidden="true">
-              <span class="game-thumb-glyph">📊</span>
-            </div>
-            <div class="game-meta">
-              <span class="game-name">Mostly</span>
-              <span class="game-tag">Guess what everyone else said.</span>
-            </div>
-          </a>
-          <a class="game-card" href="/frostline/">
-            <div class="game-thumb game-thumb--frostline" aria-hidden="true">
-              <span class="game-thumb-glyph">❄</span>
-            </div>
-            <div class="game-meta">
-              <span class="game-name">Frostline</span>
-              <span class="game-tag">Build the warm line. Survive the storm.</span>
-            </div>
-          </a>
-          <a class="game-card" href="/games/make-your-own/">
-            <div class="game-thumb game-thumb--make" aria-hidden="true">
-              <span class="game-thumb-glyph">🛠️</span>
-            </div>
-            <div class="game-meta">
-              <span class="game-name">Make your own game!</span>
-              <span class="game-tag">Steal my engine. Describe a game to an AI. Ship it this weekend.</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </section>
+  <body>
+    <noscript><a href="/?arcade">Enter the arcade →</a></noscript>
   </body>
 </html>
