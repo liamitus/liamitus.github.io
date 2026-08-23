@@ -8,52 +8,10 @@
       html, body { margin: 0; height: 100%; background: #05080f; overflow: hidden; }
       canvas { display: block; }
       body { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-
-      /* Frostline wants a mouse + keyboard. On touch devices, hide the canvas
-         and show a friendly "desktop only" notice instead of a broken game. */
-      .desktop-only-notice { display: none; }
-
-      @media (hover: none) and (pointer: coarse) {
-        #game { display: none; }
-        .desktop-only-notice {
-          display: flex;
-          position: fixed;
-          inset: 0;
-          align-items: center;
-          justify-content: center;
-          padding: 24px;
-          box-sizing: border-box;
-          background: radial-gradient(120% 120% at 50% 0%, #16335c 0%, #0a182f 55%, #05080f 100%);
-          color: #dce8ff;
-          text-align: center;
-        }
-        .desktop-only-notice .card { max-width: 340px; }
-        .desktop-only-notice .glyph { font-size: 3.2em; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5)); }
-        .desktop-only-notice h1 { font-size: 1.4em; margin: 16px 0 8px; color: #fff; }
-        .desktop-only-notice p { font-size: 0.95em; line-height: 1.5; color: #9fb0cc; margin: 0 0 22px; }
-        .desktop-only-notice a {
-          display: inline-block;
-          padding: 10px 18px;
-          font-size: 0.9em;
-          color: #dce8ff;
-          text-decoration: none;
-          border: 1px solid rgba(140, 190, 255, 0.45);
-          border-radius: 999px;
-          background: rgba(8, 18, 38, 0.6);
-        }
-      }
     </style>
     <script type="module" crossorigin src="/frostline/assets/index-cb_eZgzo.js"></script>
   </head>
   <body>
     <canvas id="game"></canvas>
-    <div class="desktop-only-notice">
-      <div class="card">
-        <div class="glyph" aria-hidden="true">❄</div>
-        <h1>Frostline is desktop-only</h1>
-        <p>This one needs a mouse and keyboard. Come back on a laptop or desktop to build the warm line.</p>
-        <a href="/games/">&larr; Back to the arcade</a>
-      </div>
-    </div>
   </body>
 </html>
